@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Research · Fanfaire</title>
+<meta name="description" content="Two research preprints that grew out of The Quiet Calculus: what they asked, what they found, and where to read the papers and evidence.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://cbaird26.github.io/fanfaire/research/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Fanfaire">
+<meta property="og:title" content="Research · Fanfaire">
+<meta property="og:description" content="Two research preprints that grew out of The Quiet Calculus, kept apart from the story.">
+<meta property="og:url" content="https://cbaird26.github.io/fanfaire/research/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-10 -10 20 20'%3E%3Cpolygon fill='%23A8823A' points='0.00,-9.60 1.76,-4.25 6.79,-6.79 4.25,-1.76 9.60,0.00 4.25,1.76 6.79,6.79 1.76,4.25 0.00,9.60 -1.76,4.25 -6.79,6.79 -4.25,1.76 -9.60,0.00 -4.25,-1.76 -6.79,-6.79 -1.76,-4.25'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Marcellus&amp;display=swap">
+<script>
+  /* Apply the reader's saved Fanfaire theme before first paint. */
+  (function () {
+    try {
+      var t = JSON.parse(window.localStorage.getItem("fanfaire:theme"));
+      if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
+<style>
+/* The research room of the same observatory: Fanfaire's paper, ink and brass,
+   set as a quieter reading page. Fiction stays on the shelf; this page is for the papers. */
+:root {
+  --paper: #ECEBF1;
+  --paper-raised: #F7F6FA;
+  --ink: #1D1A28;
+  --ink-soft: #575369;
+  --line: #CFCBDB;
+  --gilt: #79591C;
+  --gilt-glow: #A8823A;
+  --font-display: "Marcellus", "Optima", "Optima Nova", "Candara", "Palatino Linotype", Palatino, serif;
+  --font-text: "EB Garamond", "Hoefler Text", "Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --bar-h: 3.5rem;
+  --gutter-l: max(clamp(16px, 4vw, 2.5rem), env(safe-area-inset-left, 0px));
+  --gutter-r: max(clamp(16px, 4vw, 2.5rem), env(safe-area-inset-right, 0px));
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #14121C; --paper-raised: #1C1928; --ink: #E4E1EC; --ink-soft: #A6A1B8; --line: #34304A;
+    --gilt: #D5B36C; --gilt-glow: #E1C27F; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #14121C; --paper-raised: #1C1928; --ink: #E4E1EC; --ink-soft: #A6A1B8; --line: #34304A;
+  --gilt: #D5B36C; --gilt-glow: #E1C27F; color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--font-text); font-size: 1.125rem; line-height: 1.55;
+  font-kerning: normal; font-variant-numeric: oldstyle-nums proportional-nums;
+  text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+[hidden] { display: none !important; }
+a { color: var(--gilt); text-decoration-thickness: 1px; text-underline-offset: .18em; overflow-wrap: anywhere; }
+a:hover { color: var(--ink); }
+:focus-visible { outline: 2px solid var(--gilt-glow); outline-offset: 3px; }
+h1, h2, h3 { text-wrap: balance; }
+p, li, dd { text-wrap: pretty; }
+button { font: inherit; color: inherit; }
+.wrap { max-width: 76rem; margin-inline: auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
+.skip { position: absolute; left: -9999px; top: .5rem; z-index: 100; background: var(--paper-raised); color: var(--ink); padding: .5rem .8rem; }
+.skip:focus { left: 1rem; }
+.h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.15; letter-spacing: .01em; margin: 0 0 1rem; }
+.label { font-variant-caps: all-small-caps; letter-spacing: .09em; color: var(--ink-soft); }
+.lede { font-size: 1.25rem; line-height: 1.5; color: var(--ink-soft); max-width: 42rem; margin: 0; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  min-height: 2.85rem; padding: .5rem 1.2rem; border: 1px solid var(--gilt); border-radius: 2px;
+  background: transparent; color: var(--gilt); font-size: 1.08rem; letter-spacing: .02em;
+  text-decoration: none; cursor: pointer;
+}
+.btn:hover { color: var(--ink); border-color: var(--ink); }
+.btn-primary { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.btn-primary:hover { background: transparent; color: var(--ink); }
+.icon-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .45rem;
+  min-height: 2.5rem; min-width: 2.5rem; padding: .3rem .7rem; border: 1px solid var(--line); border-radius: 2px;
+  background: transparent; color: var(--ink-soft); font-size: 1rem; cursor: pointer;
+}
+.icon-btn:hover { color: var(--ink); border-color: var(--ink-soft); }
+.icon-btn svg { width: 1.05rem; height: 1.05rem; flex: none; }
+
+/* Header, as on the Fanfaire front page */
+.topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 25; background: var(--paper); border-bottom: 1px solid var(--line); }
+.topbar-row { display: flex; align-items: center; gap: 1.5rem; min-height: var(--bar-h); }
+.brand { display: inline-flex; align-items: center; gap: .55rem; color: var(--ink); text-decoration: none; font-family: var(--font-display); font-size: 1.42rem; letter-spacing: .02em; line-height: 1; }
+.brand:hover { color: var(--ink); }
+.brand svg { width: 1.1rem; height: 1.1rem; color: var(--gilt-glow); flex: none; }
+.nav { display: flex; gap: 1.6rem; margin-left: auto; }
+.nav a { color: var(--ink-soft); text-decoration: none; font-size: 1.06rem; padding-block: .3rem; border-bottom: 1px solid transparent; }
+.nav a:hover { color: var(--ink); }
+.nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--gilt-glow); }
+.topbar-tools { display: flex; align-items: center; gap: .5rem; }
+.menu-btn { display: none; }
+.mobile-nav { display: grid; padding-block: .25rem 1rem; border-top: 1px solid var(--line); }
+.mobile-nav a { padding: .7rem 0; color: var(--ink); text-decoration: none; font-size: 1.2rem; border-bottom: 1px solid var(--line); }
+.mobile-nav a:last-child { border-bottom: 0; }
+.mobile-nav a[aria-current="page"] { color: var(--gilt); }
+@media (max-width: 820px) {
+  .nav { display: none; }
+  .menu-btn { display: inline-flex; }
+  .theme-name { display: none; }
+  .topbar-tools { margin-left: auto; }
+}
+@media (min-width: 821px) { .mobile-nav { display: none !important; } }
+
+/* Page head */
+.page-head { padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(2rem, 4vw, 3rem); border-bottom: 1px solid var(--line); }
+.page-head .kicker { margin: 0 0 .3rem; font-style: italic; font-size: 1.2rem; color: var(--ink-soft); }
+.page-head h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.6rem, 6vw, 4.2rem); line-height: 1.02; margin: 0 0 .9rem; }
+
+/* The line between story and study */
+.boundary { margin: 2rem 0 0; max-width: 46rem; padding: 1.1rem 1.3rem; border: 1px solid var(--line); border-left: 3px solid var(--gilt-glow); background: var(--paper-raised); border-radius: 2px; }
+.boundary p { margin: 0; }
+.boundary p + p { margin-top: .6rem; }
+.boundary strong { font-weight: 600; }
+
+/* Bands */
+.band { padding-block: clamp(3rem, 7vw, 5rem); border-bottom: 1px solid var(--line); }
+.split { display: grid; grid-template-columns: minmax(0, 13rem) minmax(0, 44rem); gap: 1.25rem clamp(2rem, 6vw, 6rem); align-items: start; }
+.split > .label { margin: .35rem 0 0; font-size: 1.15rem; }
+@media (max-width: 760px) { .split { grid-template-columns: minmax(0, 1fr); } .split > .label { margin: 0; } }
+
+/* A paper */
+.paper h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.55rem, 3vw, 2.05rem); line-height: 1.18; letter-spacing: .005em; margin: 0 0 .35rem; }
+.paper .subtitle { margin: 0 0 1.2rem; font-style: italic; font-size: 1.2rem; color: var(--ink-soft); }
+.meta { display: flex; flex-wrap: wrap; gap: .35rem 1.6rem; margin: 0 0 1.6rem; padding: .7rem 0; border-block: 1px solid var(--line); }
+.meta div { min-width: 0; }
+.meta dt { font-variant-caps: all-small-caps; letter-spacing: .09em; color: var(--ink-soft); font-size: 1rem; }
+.meta dd { margin: 0; font-variant-numeric: lining-nums; }
+.paper h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.25rem; line-height: 1.2; margin: 1.8rem 0 .6rem; }
+.paper p { margin: 0 0 1rem; }
+.findings { list-style: none; margin: 0; padding: 0; display: grid; gap: .85rem; }
+.findings li { position: relative; padding-left: 1.4rem; }
+.findings li::before { content: ""; position: absolute; left: .1rem; top: .62em; width: .45rem; height: .45rem; transform: rotate(45deg); border: 1px solid var(--gilt-glow); }
+.findings strong { font-weight: 600; }
+.verdict { font-variant-caps: all-small-caps; letter-spacing: .07em; color: var(--gilt); white-space: nowrap; }
+blockquote { margin: 1.4rem 0; padding: 0 0 0 1.2rem; border-left: 2px solid var(--gilt-glow); font-style: italic; font-size: 1.2rem; line-height: 1.5; }
+.actions { display: flex; flex-wrap: wrap; gap: .75rem; margin: 1.8rem 0 0; }
+.paper .cite { margin: 1.2rem 0 0; font-size: 1rem; color: var(--ink-soft); }
+.cite a { font-variant-numeric: lining-nums; }
+
+/* Reading the results */
+.notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem clamp(1.5rem, 4vw, 3rem); margin: 0; }
+.notes div { min-width: 0; }
+.notes dt { font-family: var(--font-display); font-size: 1.2rem; margin: 0 0 .3rem; }
+.notes dd { margin: 0; color: var(--ink-soft); }
+@media (max-width: 640px) { .notes { grid-template-columns: minmax(0, 1fr); } }
+.plain p { margin: 0 0 1rem; }
+.plain p:last-child { margin-bottom: 0; }
+
+/* Footer */
+.site-footer { padding-block: 2.5rem 3rem; }
+.footer-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr) auto; gap: 1.5rem clamp(2rem, 5vw, 4rem); align-items: start; }
+.footer-grid p { margin: .4rem 0 0; color: var(--ink-soft); font-size: 1rem; }
+.footer-nav { display: flex; flex-wrap: wrap; gap: .3rem 1.2rem; }
+.footer-nav a { color: var(--ink-soft); }
+.footer-nav a:hover { color: var(--ink); }
+@media (max-width: 760px) { .footer-grid { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar-row wrap">
+    <a class="brand" href="../" aria-label="Fanfaire, front page">
+      <svg viewBox="-10 -10 20 20" aria-hidden="true"><polygon fill="currentColor" points="0.00,-9.60 1.76,-4.25 6.79,-6.79 4.25,-1.76 9.60,0.00 4.25,1.76 6.79,6.79 1.76,4.25 0.00,9.60 -1.76,4.25 -6.79,6.79 -4.25,1.76 -9.60,0.00 -4.25,-1.76 -6.79,-6.79 -1.76,-4.25"/></svg>
+      <span>Fanfaire</span>
+    </a>
+    <nav class="nav" aria-label="Site">
+      <a href="../#read">Read</a>
+      <a href="../#contents">Contents</a>
+      <a href="../#characters">Characters</a>
+      <a href="../#codex">Codex</a>
+      <a href="../#gallery">Gallery</a>
+      <a href="./" aria-current="page">Research</a>
+      <a href="../#about">About</a>
+    </nav>
+    <div class="topbar-tools">
+      <button class="icon-btn theme-btn" id="theme-btn" type="button" data-theme="auto" aria-label="Theme: Auto. Change theme">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10 2.75a7.25 7.25 0 0 1 0 14.5z" fill="currentColor"/></svg>
+        <span class="theme-name">Auto</span>
+      </button>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
+    </div>
+  </div>
+  <nav class="mobile-nav wrap" id="mobile-nav" aria-label="Site menu" hidden>
+    <a href="../#read">Read</a>
+    <a href="../#contents">Contents</a>
+    <a href="../#characters">Characters</a>
+    <a href="../#codex">Codex</a>
+    <a href="../#gallery">Gallery</a>
+    <a href="./" aria-current="page">Research</a>
+    <a href="../#about">About</a>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="page-head">
+    <div class="wrap">
+      <p class="kicker">From the table to the lab</p>
+      <h1>Research</h1>
+      <p class="lede">The Quiet Calculus began as a Dune campaign. Its ideas about evidence, memory and restraint then became the starting point for two research preprints by Christopher Michael Baird. This page describes them in plain language and links to the full papers and their evidence.</p>
+      <div class="boundary">
+        <p><strong>The story and the studies are kept apart.</strong> The novel is fiction, and nothing in it counts as evidence. The first paper quotes principles from the book only as a source of questions, then tests those questions separately, with rules set before each test.</p>
+        <p>Both papers are preprints and have not been peer reviewed.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="band" aria-labelledby="qc-h">
+    <div class="wrap split">
+      <p class="label">The first paper</p>
+      <article class="paper">
+        <h2 id="qc-h">The Quiet Calculus</h2>
+        <p class="subtitle">Inference, Adaptive Memory, and Conditional Physics in ZoraASI and Theory of Everything Research</p>
+        <dl class="meta">
+          <div><dt>Version</dt><dd>4.0</dd></div>
+          <div><dt>Date</dt><dd>25 October 2026</dd></div>
+          <div><dt>Length</dt><dd>58 pages</dd></div>
+          <div><dt>Status</dt><dd>Preprint</dd></div>
+        </dl>
+        <p>The paper reads Book I closely and draws out 92 principles about weighing evidence, keeping memory and making decisions, each tied to the page where it appears. It links them to the author’s ZoraASI and Theory of Everything research and states twelve predictions, each with the result that would count against it. It then tests the parts one computer can test: how a local AI model judges evidence, whether an adaptive memory beats a fixed one, and whether a set of physics calculations reproduces its earlier results.</p>
+        <h3>What it found</h3>
+        <ul class="findings">
+          <li><strong>Judging evidence.</strong> On twelve fictional test cases, a single AI reviewer and a three-role AI team each matched 10 of the 12 provisional answers, and both made the same two mistakes. One was treating silence as proof that a claim was false. The other was picking a side when equally credible sources disagreed.</li>
+          <li><strong>Two repairs for those mistakes</strong> <span class="verdict">failed their tests.</span> The second one did stop calling undecidable claims false, but it became too cautious and misread negatively worded claims, scoring 18 of 24 against the original’s 19 of 24.</li>
+          <li><strong>Adaptive memory.</strong> The first design beat a fixed memory on average but failed its pre-set tests for minimum benefit and worst-case harm. A gated repair, tested on 1,100 new simulated cases, lowered average forecasting error by about 0.4% compared with the first design and <span class="verdict">passed.</span> A fixed memory still did better in two settings it had not been tuned for.</li>
+          <li><strong>Physics checks.</strong> The calculations reproduced all 126 of their earlier checks, and two independent methods agreed in 960 configurations. These confirm that the stated equations were computed correctly. They say nothing about whether nature behaves that way.</li>
+        </ul>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://github.com/Cbaird26/quiet-calculus-research/blob/main/paper/Quiet_Calculus_Scientific_Paper_v4.0.pdf">Read the paper (PDF)</a>
+          <a class="btn" href="https://github.com/Cbaird26/quiet-calculus-research">Source, data and evidence</a>
+        </div>
+        <p class="cite" data-cite="qc">Earlier versions 1.0 to 3.0 are kept in the repository. An archived copy with a permanent DOI will be linked here.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="uwr-h">
+    <div class="wrap split">
+      <p class="label">The second paper</p>
+      <article class="paper">
+        <h2 id="uwr-h">Updating Without Runaway</h2>
+        <p class="subtitle">Truth-Constrained, Multi-Timescale Alignment for Autonomous Adaptive AI</p>
+        <dl class="meta">
+          <div><dt>Edition</dt><dd>Revised</dd></div>
+          <div><dt>Date</dt><dd>25–26 October 2026</dd></div>
+          <div><dt>Length</dt><dd>20 pages</dd></div>
+          <div><dt>Status</dt><dd>Preprint</dd></div>
+        </dl>
+        <p>An engineering proposal for AI systems that keep learning after they are built. It argues that different parts of a system should change at different speeds, that every belief should carry a record of where it came from so the system’s own notes never count as fresh evidence, and that an AI agent may ask for new permissions but never grant them to itself. It also proposes that a system should act less on its own as its uncertainty grows.</p>
+        <blockquote>Models should update. Truth should remain the reference. No intelligence should gain unilateral authority merely because it can reason faster about why that authority would be useful.</blockquote>
+        <h3>A first small test</h3>
+        <p>One of the paper’s claims is that tracking where beliefs come from stops a system from talking itself into certainty. That claim was tested on two AI models running on one computer, using 16 fictional cases written by a separate AI assistant. The test rules were fixed before either model saw a case.</p>
+        <ul class="findings">
+          <li><strong>No runaway certainty.</strong> Neither model reliably grew more confident when its own earlier note was shown back to it as if it came from someone else.</li>
+          <li><strong>But the answers drifted.</strong> Their stated confidence still moved when no new information had been added. One model’s answers moved both up and down, and the other’s mostly moved down.</li>
+          <li><strong>Instructions were not a dependable fix.</strong> Telling the model not to count its own notes did not stop the drift. The paper suggests building that rule into the software around the model instead.</li>
+          <li><strong>Real evidence still counted.</strong> On average, a genuinely new document still raised both models’ confidence with the rule in place.</li>
+        </ul>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://github.com/Cbaird26/updating-without-runaway/blob/main/paper/Updating_Without_Runaway.pdf">Read the paper (PDF)</a>
+          <a class="btn" href="https://github.com/Cbaird26/updating-without-runaway">Source, data and evidence</a>
+        </div>
+        <p class="cite" data-cite="uwr">An archived copy with a permanent DOI will be linked here.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="read-h">
+    <div class="wrap split">
+      <p class="label" id="read-h">Reading the results</p>
+      <dl class="notes">
+        <div><dt>Small and computational</dt><dd>The tests use fictional cases written by AI, AI models running on one computer, and simulations. There is no laboratory work and no data from people.</dd></div>
+        <div><dt>Not a physics result</dt><dd>Nothing here confirms a Theory of Everything. The physics checks show only that stated equations were calculated correctly.</dd></div>
+        <div><dt>Rules first, failures included</dt><dd>Each test’s pass and fail rules were written down before it ran, and failed tests are reported alongside the ones that passed. Every question put to the models, and every answer, is published with the evidence.</dd></div>
+        <div><dt>Not yet checked by others</dt><dd>Neither paper has been peer reviewed, and no one else has repeated the tests yet. The evidence folders are there so that someone can.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="who-h">
+    <div class="wrap split">
+      <p class="label" id="who-h">Who made this</p>
+      <div class="plain">
+        <p>Christopher Michael Baird is the author of both papers. They were prepared with AI assistance: Zora, the author’s ChatGPT-based research assistant, and Claude, made by Anthropic. Each paper says exactly which parts each assistant did, and all of the fictional test cases were written by AI.</p>
+        <p>Both papers connect to the author’s wider ZoraASI and Theory of Everything research. The Theory of Everything is archived on Zenodo under DOI <a href="https://doi.org/10.5281/zenodo.14019809">10.5281/zenodo.14019809</a>.</p>
+        <p>The papers, figures and data are shared under the Creative Commons Attribution 4.0 license, and the code under the MIT License. The novel and the Dune setting are not covered by those licenses.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="brand" href="../"><svg viewBox="-10 -10 20 20" aria-hidden="true"><polygon fill="currentColor" points="0.00,-9.60 1.76,-4.25 6.79,-6.79 4.25,-1.76 9.60,0.00 4.25,1.76 6.79,6.79 1.76,4.25 0.00,9.60 -1.76,4.25 -6.79,6.79 -4.25,1.76 -9.60,0.00 -4.25,-1.76 -6.79,-6.79 -1.76,-4.25"/></svg><span>Fanfaire</span></a>
+      <p>A home for fan-made worlds.</p>
+    </div>
+    <p>The Quiet Calculus is a noncommercial fan work inspired by Frank Herbert’s Dune and the Dune: Adventures in the Imperium roleplaying setting. Dune and its established setting belong to their respective rights holders. The research papers are separate, non-fiction works.</p>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="../#read">Read</a><a href="../#contents">Contents</a><a href="../#codex">Codex</a><a href="./" aria-current="page">Research</a><a href="../#about">About</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var THEMES = ["auto", "light", "dark"];
+  var NAMES = { auto: "Auto", light: "Light", dark: "Dark" };
+  function load() { try { var v = JSON.parse(window.localStorage.getItem("fanfaire:theme")); return THEMES.indexOf(v) < 0 ? "auto" : v; } catch (e) { return "auto"; } }
+  function save(t) { try { window.localStorage.setItem("fanfaire:theme", JSON.stringify(t)); } catch (e) {} }
+  var btn = document.getElementById("theme-btn");
+  function apply(t) {
+    if (t === "auto") root.removeAttribute("data-theme"); else root.setAttribute("data-theme", t);
+    btn.setAttribute("data-theme", t);
+    btn.querySelector(".theme-name").textContent = NAMES[t];
+    btn.setAttribute("aria-label", "Theme: " + NAMES[t] + ". Change theme");
+  }
+  apply(load());
+  btn.addEventListener("click", function () {
+    var next = THEMES[(THEMES.indexOf(btn.getAttribute("data-theme")) + 1) % THEMES.length];
+    apply(next); save(next);
+  });
+  var menuBtn = document.getElementById("menu-btn");
+  var mobileNav = document.getElementById("mobile-nav");
+  menuBtn.addEventListener("click", function () {
+    var open = mobileNav.hidden;
+    mobileNav.hidden = !open;
+    menuBtn.setAttribute("aria-expanded", String(open));
+  });
+})();
+</script>
+</body>
+</html>
